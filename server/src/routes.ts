@@ -28,7 +28,7 @@ routes.get("/users", readAllUsers);
  * @openapi
  * /calcados:
  *   post:
- *     summary: Cria um calcado
+ *     summary: Cria um calçado
  *     tags: [Calcados]
  *     requestBody:
  *       required: true
@@ -38,13 +38,13 @@ routes.get("/users", readAllUsers);
  *             $ref: '#/components/schemas/CalcadoInput'
  *     responses:
  *       201:
- *         description: Calcado criado com sucesso
+ *         description: Calçado criado com sucesso
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Calcado'
  *       400:
- *         description: Erro de validacao
+ *         description: Erro de validação
  */
 routes.post("/calcados", createCalcado);
 
@@ -52,11 +52,11 @@ routes.post("/calcados", createCalcado);
  * @openapi
  * /calcados:
  *   get:
- *     summary: Lista todos os calcados
+ *     summary: Lista todos os calçados
  *     tags: [Calcados]
  *     responses:
  *       200:
- *         description: Lista de calcados
+ *         description: Lista de calçados
  *         content:
  *           application/json:
  *             schema:
@@ -98,7 +98,7 @@ routes.get("/calcados/:id", readCalcadosById)
  * @openapi
  * /calcados/{id}:
  *   patch:
- *     summary: Atualiza um calcado
+ *     summary: Atualiza um calçado
  *     tags: [Calcados]
  *     parameters:
  *       - in: path
@@ -114,13 +114,13 @@ routes.get("/calcados/:id", readCalcadosById)
  *             $ref: '#/components/schemas/CalcadoUpdate'
  *     responses:
  *       200:
- *         description: Calcado atualizado
+ *         description: Calçado atualizado
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Calcado'
  *       404:
- *         description: Calcado nao encontrado
+ *         description: Calçado não encontrado
  */
 routes.patch("/calcados/:id", updateCalcado);
 
@@ -128,7 +128,7 @@ routes.patch("/calcados/:id", updateCalcado);
  * @openapi
  * /calcados/{id}:
  *   delete:
- *     summary: Remove um calcado
+ *     summary: Remove um calçado
  *     tags: [Calcados]
  *     parameters:
  *       - in: path
@@ -138,9 +138,9 @@ routes.patch("/calcados/:id", updateCalcado);
  *           type: integer
  *     responses:
  *       200:
- *         description: Calcado removido com sucesso
+ *         description: Calçado removido com sucesso
  *       404:
- *         description: Calcado nao encontrado
+ *         description: Calçado não encontrado
  */
 routes.delete("/calcados/:id", deleteCalcado);
 

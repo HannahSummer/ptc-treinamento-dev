@@ -31,7 +31,7 @@ export const swaggerSpec = swaggerJSDoc({
             id: { type: "integer", example: 1 },
             nome_produto: { type: "string", example: "Tenis Runner" },
             cor: { type: "string", example: "Preto" },
-            marca: { type: "string", example: "CITi" },
+            marca: { type: "string", example: "Olympikus" },
             tamanho: { type: "integer", example: 40 },
             preco: { type: "integer", example: 299 },
             quantidade_em_estoque: { type: "integer", example: 10 },
@@ -43,7 +43,7 @@ export const swaggerSpec = swaggerJSDoc({
           properties: {
             nome_produto: { type: "string", example: "Tenis Runner" },
             cor: { type: "string", example: "Preto" },
-            marca: { type: "string", example: "CITi" },
+            marca: { type: "string", example: "Olympikus" },
             tamanho: { type: "integer", example: 40 },
             preco: { type: "integer", example: 299 },
             quantidade_em_estoque: { type: "integer", example: 12 },
@@ -54,7 +54,7 @@ export const swaggerSpec = swaggerJSDoc({
           properties: {
             nome_produto: { type: "string", example: "Tenis Runner 2" },
             cor: { type: "string", example: "Branco" },
-            marca: { type: "string", example: "CITi" },
+            marca: { type: "string", example: "Modare" },
             tamanho: { type: "integer", example: 41 },
             preco: { type: "integer", example: 319 },
             quantidade_em_estoque: { type: "integer", example: 8 },
