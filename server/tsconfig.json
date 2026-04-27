@@ -21,6 +21,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
+    // evita avisos de deprecacao sem quebrar no TypeScript 5.2 do container
+    "ignoreDeprecations": "5.0",
     "strict": true,
     "paths": {
       "@controllers": [
