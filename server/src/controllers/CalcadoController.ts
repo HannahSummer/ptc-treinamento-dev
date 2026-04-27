@@ -65,6 +65,26 @@ export const readAllCalcados = async (_req: Request, res: Response) => {
   }
 };
 
+export const readCalcadosById = async (req: Request, res: Response) => {
+  try {
+    // Listando calçado por id, para falicilitar a leitura e os testes 
+    const id = parseId(req.params.id);
+    if (id === null) {
+      return res.status(400).json({ message: "Id inválido." });
+    }
+    const calcados = await prisma.calcado.findUnique({
+      where: { id },
+    });
+
+    return res.status(200).json(calcados);
+  } catch (error) {
+    return res.status(400).json({
+      message: "Erro ao listar calcados.",
+      error,
+    });
+  }
+};
+
 export const updateCalcado = async (req: Request, res: Response) => {
   try {
     // Validação se o código (id) esta certo antes de consultar o banco.
@@ -119,7 +139,7 @@ export const deleteCalcado = async (req: Request, res: Response) => {
       });
     }
 
-    // Confere a existencia do item para retornar o erro de forma clara.
+    // Conferindo a existencia do item para retornar o erro de forma clara.
     const existente = await prisma.calcado.findUnique({ where: { id } });
     if (!existente) {
       return res.status(404).json({
