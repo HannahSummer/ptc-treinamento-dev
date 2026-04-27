@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
 import prisma from "@database";
+import {
+  buscarCalcadosPorTamanho,
+  filtrarCalcadosPorMarca,
+  contarTotalDeParesNoEstoque,
+} from "../repositorie/CalcadoRepositorie";
 
 // convertendo e validando o id
 const parseId = (value: string): number | null => {
@@ -152,6 +157,55 @@ export const deleteCalcado = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(400).json({
       message: "Erro ao remover calcado.",
+      error,
+    });
+  }
+};
+
+export const readCalcadosByTamanho = async (req: Request, res: Response) => {
+  try {
+    const tamanho = Number(req.params.tamanho);
+
+    if (!Number.isInteger(tamanho) || tamanho <= 0) {
+      return res.status(400).json({ message: "Tamanho invalido." });
+    }
+
+    const calcados = await buscarCalcadosPorTamanho(tamanho);
+    return res.status(200).json(calcados);
+  } catch (error) {
+    return res.status(400).json({
+      message: "Erro ao buscar calcados por tamanho.",
+      error,
+    });
+  }
+};
+
+export const readCalcadosByMarca = async (req: Request, res: Response) => {
+  try {
+    const marca = String(req.params.marca || "").trim();
+
+    if (!marca) {
+      return res.status(400).json({ message: "Marca invalida." });
+    }
+
+    const calcados = await filtrarCalcadosPorMarca(marca);
+    return res.status(200).json(calcados);
+  } catch (error) {
+    return res.status(400).json({
+      message: "Erro ao filtrar calcados por marca.",
+      error,
+    });
+  }
+};
+
+export const countCalcadosTotal = async (req: Request, res: Response) => {
+  try {
+    const marca = String(req.query.marca || "").trim() || undefined;
+    const total = await contarTotalDeParesNoEstoque(marca);
+    return res.status(200).json({ total_de_pares: total });
+  } catch (error) {
+    return res.status(400).json({
+      message: "Erro ao contar pares no estoque.",
       error,
     });
   }

@@ -7,6 +7,9 @@ import {
 	readAllCalcados,
 	updateCalcado,
 	readCalcadosById,
+	readCalcadosByMarca,
+	readCalcadosByTamanho,
+	countCalcadosTotal,
 } from "./controllers/CalcadoController";
 
 
@@ -143,6 +146,61 @@ routes.patch("/calcados/:id", updateCalcado);
  *         description: Calçado não encontrado
  */
 routes.delete("/calcados/:id", deleteCalcado);
+
+/**
+ * @openapi
+ * /calcados/tamanho/{tamanho}:
+ *   get:
+ *     summary: Busca calcados por tamanho
+ *     tags: [Calcados]
+ *     parameters:
+ *       - in: path
+ *         name: tamanho
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lista de calcados do tamanho informado
+ */
+routes.get("/calcados/tamanho/:tamanho", readCalcadosByTamanho);
+
+/**
+ * @openapi
+ * /calcados/marca/{marca}:
+ *   get:
+ *     summary: Filtra calcados por marca
+ *     tags: [Calcados]
+ *     parameters:
+ *       - in: path
+ *         name: marca
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de calcados da marca informada
+ */
+routes.get("/calcados/marca/:marca", readCalcadosByMarca);
+
+/**
+ * @openapi
+ * /calcados/estoque/total:
+ *   get:
+ *     summary: Conta o total de pares no estoque
+ *     tags: [Calcados]
+ *     parameters:
+ *       - in: query
+ *         name: marca
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Filtrar a contagem por marca (opcional)
+ *     responses:
+ *       200:
+ *         description: Total de pares cadastrados
+ */
+routes.get("/calcados/estoque/total", countCalcadosTotal);
 
 
 export default routes;

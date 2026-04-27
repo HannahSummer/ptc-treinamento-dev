@@ -1,4 +1,10 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import path from "path";
+
+const apis = [
+  path.join(process.cwd(), "src/**/*.ts"),
+  path.join(process.cwd(), "dist/**/*.js"),
+];
 
 export const swaggerSpec = swaggerJSDoc({
   definition: {
@@ -63,5 +69,5 @@ export const swaggerSpec = swaggerJSDoc({
       },
     },
   },
-  apis: ["./src/routes.ts", "./dist/routes.js"],
+  apis,
 });
