@@ -4,7 +4,7 @@ import {
   buscarCalcadosPorTamanho,
   filtrarCalcadosPorMarca,
   contarTotalDeParesNoEstoque,
-} from "../repositorie/CalcadoRepositorie";
+} from "../repositories/CalcadoRepositorie";
 
 // convertendo e validando o id
 const parseId = (value: string): number | null => {
